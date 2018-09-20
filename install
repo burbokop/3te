@@ -1,0 +1,27 @@
+#!/bin/sh
+
+echo installetion 3te
+
+mkdir /usr/include/3te
+
+cp ./*.h /usr/include/3te/
+cp ./build/lib3te.a /usr/lib/
+
+echo "files installed to /usr/include/3te/"
+echo ./*.h
+echo "lib3te.a installed to /usr/lib/"
+
+
+echo "
+#!/bin/sh
+
+echo updating 3te
+
+cp ./*.h /usr/include/3te/
+cp ./build/lib3te.a /usr/lib/
+
+echo files installed to /usr/include/3te/
+echo ./*.h
+echo lib3te.a installed to /usr/lib/" >> update
+
+chmod +x ./update

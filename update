@@ -1,0 +1,11 @@
+
+#!/bin/sh
+
+echo updating 3te
+
+cp ./*.h /usr/include/3te/
+cp ./build/lib3te.a /usr/lib/
+
+echo files installed to /usr/include/3te/
+echo ./*.h
+echo lib3te.a installed to /usr/lib/
