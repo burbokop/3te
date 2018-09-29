@@ -60,7 +60,8 @@ SOURCES       = ../frame.cpp \
 		../afcontainer.cpp \
 		../capability.cpp \
 		../object.cpp \
-		../ivector.cpp 
+		../ivector.cpp \
+		../debug.cpp 
 OBJECTS       = frame.o \
 		vector.o \
 		kinematic.o \
@@ -74,7 +75,8 @@ OBJECTS       = frame.o \
 		afcontainer.o \
 		capability.o \
 		object.o \
-		ivector.o
+		ivector.o \
+		debug.o
 DIST          = /home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/common/unix.conf \
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/common/linux.conf \
@@ -244,6 +246,7 @@ DIST          = /home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/spec_pre
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/qt_config.prf \
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/spec_post.prf \
+		../.qmake.stash \
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/toolchain.prf \
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -273,7 +276,8 @@ DIST          = /home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/spec_pre
 		afcontainer.h \
 		capability.h \
 		object.h \
-		ivector.h ../frame.cpp \
+		ivector.h \
+		debug.h ../frame.cpp \
 		../vector.cpp \
 		../kinematic.cpp \
 		../rigidbody.cpp \
@@ -286,7 +290,8 @@ DIST          = /home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/spec_pre
 		../afcontainer.cpp \
 		../capability.cpp \
 		../object.cpp \
-		../ivector.cpp
+		../ivector.cpp \
+		../debug.cpp
 QMAKE_TARGET  = 3te
 DESTDIR       = 
 TARGET        = lib3te.a
@@ -471,6 +476,7 @@ Makefile: ../3te.pro /home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/linux-g++/qm
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/qt_config.prf \
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/toolchain.prf \
 		/home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -658,6 +664,7 @@ Makefile: ../3te.pro /home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/linux-g++/qm
 /home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/qt_config.prf:
 /home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/toolchain.prf:
 /home/boris/Installed/Qt/5.11.1/gcc_64/mkspecs/features/default_pre.prf:
@@ -728,7 +735,8 @@ compiler_clean:
 frame.o: ../frame.cpp ../frame.h \
 		../vector.h \
 		../tickcounter.h \
-		../timer.h
+		../timer.h \
+		../debug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o frame.o ../frame.cpp
 
 vector.o: ../vector.cpp ../vector.h
@@ -783,6 +791,9 @@ object.o: ../object.cpp ../object.h \
 
 ivector.o: ../ivector.cpp ../ivector.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ivector.o ../ivector.cpp
+
+debug.o: ../debug.cpp ../debug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug.o ../debug.cpp
 
 ####### Install
 

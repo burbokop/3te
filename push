@@ -3,6 +3,6 @@
 git status
 git add .
 git status
-git commit -a
+git commit -m #1
 git status
 git push -u origin master

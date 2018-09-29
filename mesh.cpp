@@ -4,6 +4,13 @@
 #include <string.h>
 #include <GL/glu.h>
 
+#include "debug.h"
+
+#ifdef NULL
+#undef NULL
+#endif
+#define NULL nullptr
+
 using namespace burbokop::utilities3d;
 
 Mesh::Mesh()
@@ -20,18 +27,20 @@ Mesh::Mesh()
 
 Mesh *Mesh::loadMesh(const char *path)
 {
+    Debug::log("Loading mesh: " + std::string(path));
     std::vector <Vector3d*> *vertices = new std::vector<Vector3d*>();
     std::vector <Vector*> *uv_map = new std::vector<Vector*>();
     std::vector <Vector3d*> *normals = new std::vector<Vector3d*>();
-
     std::vector <Vector3d*> *indices = new std::vector<Vector3d*>();
 
 
+    Debug::log("Open file: " + std::string(path));
     FILE *file = fopen(path, "r");
     if(file == NULL) {
         return NULL;
     }
 
+    Debug::log("Parsing file: " + std::string(path));
     while(true) {
         std::string line;
         if (fscanf(file, "%s", line.c_str()) == EOF) break;
@@ -77,6 +86,7 @@ Mesh *Mesh::loadMesh(const char *path)
 
     Mesh *result = new Mesh();
 
+    Debug::log("Creating mesh.");
     unsigned int exceptionAppearance = 0;
     for(unsigned int i = 0; i < indices->size(); i++) {
 
@@ -98,6 +108,7 @@ Mesh *Mesh::loadMesh(const char *path)
 
         result->vertices->push_back(new MeshVertex(ik_position, ik_normal, ik_uv_tp));
     }
+    Debug::log("Mesh loading complete.");
     return result;
 }
 

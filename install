@@ -2,14 +2,24 @@
 
 echo installetion 3te
 
-mkdir /usr/include/3te
+
+string=`g++ -print-search-dirs`
+
+IFS=':' read -r a second a fourth a <<-_EOF_
+$string
+_EOF_
+
+echo $second
+
+
+#mkdir /usr/include/3te
 
 cp ./*.h /usr/include/3te/
-cp ./build/lib3te.a /usr/lib/
+cp ./build/lib3te.a $second
 
 echo "files installed to /usr/include/3te/"
 echo ./*.h
-echo "lib3te.a installed to /usr/lib/"
+echo "lib3te.a installed to $second"
 
 
 echo "
@@ -17,11 +27,21 @@ echo "
 
 echo updating 3te
 
+string=`g++ -print-search-dirs`
+
+IFS=':' read -r a second a fourth a <<-_EOF_
+$string
+_EOF_
+
+echo $second
+
+
 cp ./*.h /usr/include/3te/
-cp ./build/lib3te.a /usr/lib/
+cp ./build/lib3te.a $second
+
 
 echo files installed to /usr/include/3te/
 echo ./*.h
-echo lib3te.a installed to /usr/lib/" >> update
+echo lib3te.a installed to $second" >> update
 
 chmod +x ./update

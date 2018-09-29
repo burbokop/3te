@@ -1,5 +1,10 @@
 #include "tickcounter.h"
 
+#ifdef NULL
+#undef NULL
+#endif
+#define NULL nullptr
+
 using namespace burbokop;
 
 TickCounter::TickCounter() {

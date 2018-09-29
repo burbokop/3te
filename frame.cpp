@@ -1,36 +1,57 @@
 #include "frame.h"
 
 #include "tickcounter.h"
+#include "debug.h"
+
+
+#ifdef NULL
+#undef NULL
+#endif
+#define NULL nullptr
 
 using namespace burbokop::tte;
 
 void Frame::mwl()
 {
+    Debug::log("Initializing game.");
     this->initGame();
+    Debug::log("Game initialised successfully.");
     TickCounter *tickCounter = new TickCounter();
+    Debug::log("Starting main loop.");
     while (!this->exitFlag) {
+        //Debug::log("Beginning of main loop iteration.");
         if(!this->pauseFlag) {
             this->gameLoop();
         }
         this->mwltps = tickCounter->count();
+        //Debug::log("Ending of main loop iteration (fps: " + std::to_string(this->mwltps) + ").");
         std::this_thread::sleep_for(std::chrono::milliseconds(1000 / 24));
     }
+    Debug::log("Main loop ended.");
 }
 
 void burbokop::tte::Frame::gwl()
 {
+    Debug::log("Initializing graphics.");
     this->initGraphics();
+    Debug::log("Graphics initialised successfully.");
     TickCounter *tickCounter = new TickCounter();
+    Debug::log("Starting render loop.");
     while (!this->exitFlag) {
+        //Debug::log("Beginning of render loop iteration.");
         this->render();
         this->gwltps = tickCounter->count();
+        //Debug::log("Ending of render loop iteration (fps: " + std::to_string(this->gwltps) + ").");
         std::this_thread::sleep_for(std::chrono::milliseconds(1000 / 60));
     }
+    Debug::log("Render loop ended.");
 }
 
 void burbokop::tte::Frame::ewl()
 {
+    Debug::log("Initializing event handler.");
     TickCounter *tickCounter = new TickCounter();
+    Debug::log("Event handler initialised successfully.");
     while (!this->exitFlag) {
         SDL_Event event;
         if (SDL_WaitEvent(&event))
@@ -54,6 +75,7 @@ void burbokop::tte::Frame::ewl()
         }
         this->ewltps = tickCounter->count();
     }
+    Debug::log("Event loop ended.");
 }
 
 burbokop::tte::Frame::Frame()

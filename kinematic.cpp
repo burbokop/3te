@@ -1,5 +1,10 @@
 #include "kinematic.h"
 
+#ifdef NULL
+#undef NULL
+#endif
+#define NULL nullptr
+
 using namespace burbokop;
 
 Kinematic::Kinematic()

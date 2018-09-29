@@ -1,5 +1,10 @@
 #include "timer.h"
 
+#ifdef NULL
+#undef NULL
+#endif
+#define NULL nullptr
+
 using namespace burbokop;
 
 Timer::Timer(long interval)

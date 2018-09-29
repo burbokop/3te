@@ -2,6 +2,11 @@
 
 #include <math.h>
 
+#ifdef NULL
+#undef NULL
+#endif
+#define NULL nullptr
+
 using namespace burbokop;
 
 double AFContainer::modmin(double a, double b)

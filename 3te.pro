@@ -27,7 +27,8 @@ SOURCES += frame.cpp \
     afcontainer.cpp \
     capability.cpp \
     object.cpp \
-    ivector.cpp
+    ivector.cpp \
+    debug.cpp
 
 
 HEADERS += frame.h \
@@ -43,7 +44,8 @@ HEADERS += frame.h \
     afcontainer.h \
     capability.h \
     object.h \
-    ivector.h
+    ivector.h \
+    debug.h
 
 
 

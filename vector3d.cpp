@@ -2,6 +2,11 @@
 
 #include <math.h>
 
+#ifdef NULL
+#undef NULL
+#endif
+#define NULL nullptr
+
 using namespace burbokop::utilities3d;
 
 Vector3d::Vector3d() {
